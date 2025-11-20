@@ -23,7 +23,7 @@ graph.add_node("chat", ChatNode)
 graph.set_entry_point("chat")
 graph.set_finish_point("chat")
 
-app = graph.compile(checkpointer=checkpointer)
+gf_graph= graph.compile(checkpointer=checkpointer)
 
 if __name__ == "__main__":
     state = {
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     }
 
     config = {"configurable": {"thread_id": "00"}}
-    result =app.invoke(
+    result =gf_graph.invoke(
         {"messages": [{"type": "human", "content": "Do you know about my name?"}]},config=config
     )
 
